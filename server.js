@@ -1,8 +1,11 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var morgan = require('morgan')
 var app = express();
 
+app.use(morgan('tiny'));
 app.use(bodyParser.json());
+
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://admin:020300@atn-rt7kb.mongodb.net/atn?retryWrites=true&w=majority', {useNewUrlParser: true});
@@ -60,7 +63,6 @@ app.post('/api/users',(req,res)=>{
 });
 
 app.get('/api/users',(req,res)=>{
-    console.log('GET /users');
     User.find({},(err,result)=>{
         if (err) {
             console.log(err);
@@ -72,7 +74,6 @@ app.get('/api/users',(req,res)=>{
 });
 
 app.get('/api/users/:id',(req,res)=>{
-    console.log('GET /users',req.params.id);
     User.findById(req.params.id,(err,result)=>{
         if (err) {
             console.log(err);
@@ -84,7 +85,6 @@ app.get('/api/users/:id',(req,res)=>{
 });
 
 app.get('/api/users/:id/transactions',(req,res)=>{
-    console.log('GET /users',req.params.id);
     Transaction.find({userId:req.params.id},(err,result)=>{
         if (err) {
             console.log(err);
@@ -96,7 +96,6 @@ app.get('/api/users/:id/transactions',(req,res)=>{
 });
 
 app.get('/api/products',(req,res)=>{
-    console.log('GET /products');
     Product.find({},(err,result)=>{
         if (err) {
             console.log(err);
@@ -108,7 +107,6 @@ app.get('/api/products',(req,res)=>{
 });
 
 app.get('/api/transactions',(req,res)=>{
-    console.log('GET /products');
     Product.find({},(err,result)=>{
         if (err) {
             console.log(err);
@@ -132,7 +130,5 @@ app.post('/api/transactions',(req,res)=>{
               }
         });
       }
-    
-    console.log('POST /users',req.body);
 })
 
