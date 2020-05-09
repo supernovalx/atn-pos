@@ -1,0 +1,22 @@
+<h1>Transaction {{id}} details</h1>
+<table *ngIf="transaction" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Product ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of transaction.productIds">
+        <th scope="row">{{product.id._id}}</th>
+        <td>{{ product.id.name }}</td>
+        <td>{{ product.id.description }}</td>
+        <td>{{ product.id.price |currency}}</td>
+        <td>{{ product.quantity}}</td>
+      </tr>
+    </tbody>
+</table>
+<h1>Total value: {{totalValue | currency}}</h1>

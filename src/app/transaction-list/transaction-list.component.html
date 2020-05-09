@@ -1,0 +1,20 @@
+<table *ngIf="transactions" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Transaction ID</th>
+        <th scope="col">Created by shop</th>
+        <th scope="col">Created at</th>
+        <th scope="col">Item quantity</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <th scope="row">{{transaction._id}}</th>
+        <td>{{ transaction.userName }}</td>
+        <td>{{ transaction.createdAt |date:'medium'}}</td>
+        <td>{{ transaction.productIds.length}}</td>
+        <td><a [routerLink]="['/transactions/',transaction._id]">Details</a></td>
+      </tr>
+    </tbody>
+</table>

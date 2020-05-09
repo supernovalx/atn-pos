@@ -1,0 +1,27 @@
+<h3>Create new transaction</h3>
+<app-product-search (searchResultClick)="onSearchResultClick($event)"></app-product-search>
+<h3>Product list</h3>
+<table *ngIf="products" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Product ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">{{product._id}}</th>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price |currency}}</td>
+        <td><input type="number" min="1" (change)="calcTotal()" [(ngModel)]="product.quantity"></td>
+        <td>{{ product.price*product.quantity |currency}}</td>
+      </tr>
+    </tbody>
+</table>
+<h1>Total: {{totalValue |currency}}</h1>
+<button class="btn btn-primary" (click)="createTransaction()">Create transaction</button>

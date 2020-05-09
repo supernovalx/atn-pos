@@ -1,0 +1,13 @@
+<div id="search-component">
+    <h4><label for="search-box">Product Search</label></h4>
+  
+    <input autocomplete="false" #searchBox id="search-box" (input)="search(searchBox.value)" [(ngModel)]="query" />
+  
+    <ul class="search-result">
+      <li *ngFor="let product of searchResult" >
+        <a (click)="selectResult(product)">
+          {{product.name}}
+        </a>
+      </li>
+    </ul>
+  </div>

@@ -1,0 +1,18 @@
+<table *ngIf="users" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Shop ID</th>
+        <th scope="col">Shop name</th>
+        <th scope="col">Shop description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user._id}}</th>
+        <td>{{ user.userName }}</td>
+        <td>{{ user.description}}</td>
+        <td><a [routerLink]="['/shops/',user._id]">Details</a></td>
+      </tr>
+    </tbody>
+</table>

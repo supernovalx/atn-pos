@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><img src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""> The ATN company</a>
+  <div class="navbar-nav">
+    <a *ngIf='auth.isLoggedIn() && !auth.isManager()' class="nav-link" [routerLink]="['/transactions']">Transactions history</a>
+    <a *ngIf='auth.isLoggedIn() && !auth.isManager()' class="nav-link" [routerLink]="['/new-transactions']">New transaction</a>
+    <a *ngIf='auth.isLoggedIn() && auth.isManager()' class="nav-link" [routerLink]="['/shops']">Shop list</a>
+    <a *ngIf='auth.isLoggedIn() && auth.isManager()' class="nav-link" [routerLink]="['/transactions-stats']">Transactions statistic</a>
+
+
+    <span class="nav-item navbar-text" *ngIf='auth.isLoggedIn()'>
+      [Welcome {{ auth.getUserDetails().userName}}]
+    </span>
+    <a *ngIf='!auth.isLoggedIn()' class="nav-link" [routerLink]="['/login']">Login</a>
+    <a *ngIf='auth.isLoggedIn()' class=" nav-link" (click)='auth.logout()' href="#">Logout</a>
+  </div>
+
+</nav>
