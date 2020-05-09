@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class ApiService {
 
   constructor(private http: HttpClient,private auth: AuthenticationService) { }
-  apiUrl='http://localhost:8080/api/';
+  apiUrl='/api/';
 
   public getAllTransactions(): Observable<any> {
     let base;
